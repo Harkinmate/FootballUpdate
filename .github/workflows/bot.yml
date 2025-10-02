@@ -16,19 +16,22 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          # Use a modern, stable Python version
+          python-version: '3.10' 
 
-      - name: Install dependencies
-        run: pip install feedparser requests beautifulsoup4 python-telegram-bot
+      - name: Install dependencies (FORCED UPDATE)
+        run: |
+          # The error occurs because the installed version is too old.
+          # We explicitly install a recent, known-compatible version (e.g., v20.x or latest)
+          # using --upgrade to bypass any cached old version.
+          pip install --upgrade feedparser requests beautifulsoup4 python-telegram-bot
 
       - name: Run Bot Script
-        # The script now reads the BOT_TOKEN from the environment
+        # Executes your Python file: bot.py
         run: python bot.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }} 
           
-      # CRITICAL: This step commits the updated posted.json back to the repository
-      # This ensures the cache persists between runs, preventing duplicate posts.
       - name: Commit and Push Cache File
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
