@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Bot Script
         # The script now reads the BOT_TOKEN from the environment
-        run: python football_bot.py
+        run: python bot.py
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }} 
           
