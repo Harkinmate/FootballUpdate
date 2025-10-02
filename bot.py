@@ -131,7 +131,7 @@ def format_article(entry) -> dict | None:
             summary_display = summary_escaped[:SUMMARY_TRUNCATE].strip() + "..."
             
         # The caption uses MarkdownV2 for the bolded title
-        caption = f'⚽ *{title_escaped}*\n\n{summary_display}\n\n{hashtags}'
+        caption = f'⚽⚽ *{title_escaped}*\n\n{summary_display}\n\n{hashtags}'
 
         return {
             "title": title_raw, 
